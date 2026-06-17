@@ -7,6 +7,8 @@
     <title>Currículo Interativo - Henry Ribeiro dos Santos Cardoso</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para os ícones de redes sociais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -16,6 +18,7 @@
 
         ::-webkit-scrollbar {
             width: 8px;
+            height: 6px;
         }
 
         ::-webkit-scrollbar-track {
@@ -32,9 +35,20 @@
             background: #6c757d;
         }
 
-        .content-section {
-            padding-top: 6rem;
-            margin-top: -4rem;
+        /* Ajuste do espaçamento das seções para desktop */
+        @media (min-width: 768px) {
+            .content-section {
+                padding-top: 6rem;
+                margin-top: -4rem;
+            }
+        }
+
+        /* Espaçamento mobile para compensar o menu fixo superior */
+        @media (max-width: 767px) {
+            .content-section {
+                padding-top: 5.5rem;
+                margin-top: -3.5rem;
+            }
         }
 
         .nav-link {
@@ -71,37 +85,53 @@
     </style>
 </head>
 
+<!-- Body vira coluna no mobile (flex-col) e linha no desktop (md:flex-row) -->
+
 <body class="flex flex-col md:flex-row">
 
+    <!-- Sidebar fixada no topo no mobile e na esquerda no desktop -->
     <nav id="sidebar"
-        class="w-full md:w-64 bg-white shadow-lg md:fixed md:h-full p-4 transition-transform duration-300 ease-in-out z-20 flex flex-col justify-between">
-        <div class="text-center py-4">
-            <h1 class="text-xl font-semibold text-gray-800">Henry Ribeiro dos Santos Cardoso</h1>
-            <p class="text-sm text-gray-600 mt-1">Software Engineer / Desenvolvedor Full Stack</p>
+        class="w-full md:w-64 bg-white shadow-lg fixed top-0 md:h-full p-4 transition-transform duration-300 ease-in-out z-20 flex flex-col justify-between shrink-0">
+        <div class="text-center py-1 md:py-4">
+            <h1 class="text-base md:text-xl font-semibold text-gray-800 break-words">Henry Ribeiro dos Santos Cardoso
+            </h1>
+            <p class="text-xs md:text-sm text-gray-600 mt-0.5 md:mt-1">Software Engineer / Desenvolvedor Full Stack</p>
         </div>
-        <ul class="mt-4 space-y-2 flex-1" id="nav-menu">
-            <li><a href="#resumo" class="nav-link block py-2.5 px-4 rounded font-medium text-gray-700">Resumo
-                    Profissional</a></li>
+
+        <!-- Menu com rolagem horizontal no mobile para não quebrar a tela -->
+        <ul class="mt-2 md:mt-4 flex flex-row overflow-x-auto md:overflow-x-visible md:flex-col gap-1 md:space-y-2 flex-1 pb-1 md:pb-0 whitespace-nowrap md:whitespace-normal"
+            id="nav-menu">
+            <li><a href="#resumo"
+                    class="nav-link block py-1.5 px-3 md:py-2.5 md:px-4 rounded font-medium text-gray-700 text-xs md:text-sm">Resumo</a>
+            </li>
             <li><a href="#experiencia"
-                    class="nav-link block py-2.5 px-4 rounded font-medium text-gray-700">Experiência</a></li>
-            <li><a href="#formacao" class="nav-link block py-2.5 px-4 rounded font-medium text-gray-700">Formação</a>
+                    class="nav-link block py-1.5 px-3 md:py-2.5 md:px-4 rounded font-medium text-gray-700 text-xs md:text-sm">Experiência</a>
+            </li>
+            <li><a href="#formacao"
+                    class="nav-link block py-1.5 px-3 md:py-2.5 md:px-4 rounded font-medium text-gray-700 text-xs md:text-sm">Formação</a>
             </li>
             <li><a href="#habilidades"
-                    class="nav-link block py-2.5 px-4 rounded font-medium text-gray-700">Habilidades</a></li>
-            <li><a href="#projetos" class="nav-link block py-2.5 px-4 rounded font-medium text-gray-700">Projetos</a>
+                    class="nav-link block py-1.5 px-3 md:py-2.5 md:px-4 rounded font-medium text-gray-700 text-xs md:text-sm">Habilidades</a>
             </li>
-            <li><a href="#contato" class="nav-link block py-2.5 px-4 rounded font-medium text-gray-700">Contato</a></li>
+            <li><a href="#projetos"
+                    class="nav-link block py-1.5 px-3 md:py-2.5 md:px-4 rounded font-medium text-gray-700 text-xs md:text-sm">Projetos</a>
+            </li>
+            <li><a href="#contato"
+                    class="nav-link block py-1.5 px-3 md:py-2.5 md:px-4 rounded font-medium text-gray-700 text-xs md:text-sm">Contato</a>
+            </li>
         </ul>
-        <div class="pt-6 text-center text-xs text-gray-500 border-t border-gray-100">
+
+        <div class="hidden md:block pt-6 text-center text-xs text-gray-500 border-t border-gray-100">
             <p>&copy; <span id="currentYear"></span> Henry Ribeiro dos Santos Cardoso. Todos os direitos reservados.</p>
         </div>
     </nav>
 
-    <main class="flex-1 md:ml-64 p-6 md:p-10 bg-gray-50 min-h-screen">
+    <!-- Main recebe margem superior no mobile (pt-24) e margem esquerda no desktop (md:ml-64) -->
+    <main class="flex-1 pt-28 mobile-pt md:pt-6 md:ml-64 p-4 md:p-10 bg-gray-50 min-h-screen">
 
-        <section id="resumo" class="content-section card rounded-lg p-6 md:p-8 mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold accent-color">Resumo Profissional</h2>
-            <p class="text-gray-700 leading-relaxed text-justify">
+        <section id="resumo" class="content-section card rounded-lg p-5 md:p-8 mb-6 md:mb-8">
+            <h2 class="text-xl md:text-3xl font-bold accent-color">Resumo Profissional</h2>
+            <p class="text-sm md:text-base text-gray-700 leading-relaxed text-justify">
                 Desenvolvedor Full Stack com 8 anos de experiência em desenvolvimento web e mobile, proficiente em
                 React, Node.js, Python e bancos de dados relacionais e NoSQL. Habilidade comprovada na criação de
                 soluções eficientes, escaláveis e com foco na experiência do usuário. Experiência em metodologias ágeis
@@ -111,13 +141,13 @@
             </p>
         </section>
 
-        <section id="experiencia" class="content-section card rounded-lg p-6 md:p-8 mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold accent-color">Experiência Profissional</h2>
+        <section id="experiencia" class="content-section card rounded-lg p-5 md:p-8 mb-6 md:mb-8">
+            <h2 class="text-xl md:text-3xl font-bold accent-color">Experiência Profissional</h2>
             <div class="space-y-6">
                 <div class="border-l-4 border-blue-500 pl-4">
-                    <h3 class="text-xl font-semibold text-gray-800">Desenvolvedor Full Stack Pleno</h3>
-                    <p class="text-sm text-gray-600"> T4B | Brasília-DF | Mar 2025 - Presente</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-800">Desenvolvedor Full Stack Pleno</h3>
+                    <p class="text-xs md:text-sm text-gray-600"> T4B | Brasília-DF | Mar 2025 - Presente</p>
+                    <ul class="list-disc list-inside mt-2 text-xs md:text-sm text-gray-700 space-y-1">
                         <li>Liderei o desenvolvimento do frontend de um novo produto SaaS, utilizando React e
                             TypeScript, resultando em uma interface 20% mais rápida.</li>
                         <li>Desenvolvi APIs RESTful robustas com Node.js e Express, melhorando a performance de
@@ -128,9 +158,10 @@
                     </ul>
                 </div>
                 <div class="border-l-4 border-blue-500 pl-4">
-                    <h3 class="text-xl font-semibold text-gray-800">Software Engineer</h3>
-                    <p class="text-sm text-gray-600">Conecta Tecnologias | Brasília-DF | Jan 2021 - Fev 2022</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-800">Software Engineer</h3>
+                    <p class="text-xs md:text-sm text-gray-600">Conecta Tecnologias | Brasília-DF | Jan 2021 - Fev 2022
+                    </p>
+                    <ul class="list-disc list-inside mt-2 text-xs md:text-sm text-gray-700 space-y-1">
                         <li>Otimizei a montagem e manutenção de 50+ computadores, reduzindo o tempo de serviço em 15%.
                         </li>
                         <li>Desenvolvi scripts de automação em Python para backup de dados, economizando aproximadamente
@@ -141,9 +172,9 @@
                     </ul>
                 </div>
                 <div class="border-l-4 border-blue-500 pl-4">
-                    <h3 class="text-xl font-semibold text-gray-800">Desenvolvedor Baixo nivel C/C++ </h3>
-                    <p class="text-sm text-gray-600">Evolve | Brasília-DF | feveiro 2019 - Dez 2024</p>
-                    <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-800">Desenvolvedor Baixo nível C/C++ </h3>
+                    <p class="text-xs md:text-sm text-gray-600">Evolve | Brasília-DF | feveiro 2019 - Dez 2024</p>
+                    <ul class="list-disc list-inside mt-2 text-xs md:text-sm text-gray-700 space-y-1">
                         <li>Colaborei na programação de microcontroladores ESP32 para um projeto de IoT, implementando 2
                             módulos de sensores.</li>
                         <li>Executei testes em sistemas embarcados, identificando e auxiliando na correção de 5 bugs
@@ -155,36 +186,37 @@
             </div>
         </section>
 
-        <section id="formacao" class="content-section card rounded-lg p-6 md:p-8 mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold accent-color">Formação Acadêmica</h2>
-            <div class="space-y-4">
+        <section id="formacao" class="content-section card rounded-lg p-5 md:p-8 mb-6 md:mb-8">
+            <h2 class="text-xl md:text-3xl font-bold accent-color">Formação Acadêmica</h2>
+            <div class="space-y-4 text-sm md:text-base">
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-800">Bacharelado em Engenharia de Software</h3>
+                    <h3 class="text-lg font-semibold text-gray-800">Bacharelado em Engenharia de Software</h3>
                     <p class="text-gray-600">Universidade Católica de Brasília (UCB) | Cursando (6º Período)</p>
-                    <p class="text-sm text-gray-500 mt-0.5">Coeficiente de Rendimento Acadêmico (CRA): 9,2</p>
+                    <p class="text-xs text-gray-500 mt-0.5">Coeficiente de Rendimento Acadêmico (CRA): 9,2</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-800">Curso Técnico em esenvolvimento de sistemas</h3>
+                    <h3 class="text-lg font-semibold text-gray-800">Curso Técnico em Desenvolvimento de Sistemas</h3>
                     <p class="text-gray-600">Senai | Cursando</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-800">Certificação Microsoft Certified: Azure AI
+                    <h3 class="text-lg font-semibold text-gray-800">Certificação Microsoft Certified: Azure AI
                         Fundamentals (AI-900)</h3>
                     <p class="text-gray-600">Microsoft</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-800">Certificação AWS Cloud Practitioner</h3>
+                    <h3 class="text-lg font-semibold text-gray-800">Certificação AWS Cloud Practitioner</h3>
                     <p class="text-gray-600">Amazon Web Services | Emitida em Mar 2024</p>
                 </div>
             </div>
         </section>
 
-        <section id="habilidades" class="content-section card rounded-lg p-6 md:p-8 mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold accent-color">Habilidades Técnicas</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Grade adaptável: 1 coluna no celular, 2 no tablet, 3 no PC -->
+        <section id="habilidades" class="content-section card rounded-lg p-5 md:p-8 mb-6 md:mb-8">
+            <h2 class="text-xl md:text-3xl font-bold accent-color">Habilidades Técnicas</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm md:text-base">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Frontend</h3>
-                    <ul class="list-disc list-inside text-gray-700">
+                    <ul class="list-disc list-inside text-gray-700 space-y-0.5">
                         <li>HTML5, CSS3, JavaScript (ES6+), TypeScript</li>
                         <li>React, Next.js, Vue.js, Angular</li>
                         <li>Tailwind CSS, Bootstrap</li>
@@ -193,7 +225,7 @@
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Backend</h3>
-                    <ul class="list-disc list-inside text-gray-700">
+                    <ul class="list-disc list-inside text-gray-700 space-y-0.5">
                         <li>Node.js, Express.js, NestJS</li>
                         <li>Python (Django, FastAPI, Flask), C</li>
                         <li>Java (Spring Boot)</li>
@@ -202,29 +234,26 @@
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Mobile</h3>
-                    <ul class="list-disc list-inside text-gray-700">
+                    <ul class="list-disc list-inside text-gray-700 space-y-0.5">
                         <li>React Native</li>
                         <li>Flutter (Básico)</li>
-                        <li>Kotlin</li>
-                        <li>Swift</li>
-                        <li>Java</li>
-                        <li>Ionic</li>
-                        <li>dart</li>
+                        <li>Kotlin, Swift, Java</li>
+                        <li>Ionic, Dart</li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Banco de Dados</h3>
-                    <ul class="list-disc list-inside text-gray-700">
-                        <li>PostgreSQL, MySQL,Redis</li>
+                    <ul class="list-disc list-inside text-gray-700 space-y-0.5">
+                        <li>PostgreSQL, MySQL, Redis</li>
                         <li>MongoDB, Firebase, SupabaseDB</li>
-                        <li>CosmosDB, SQLite, duckDB</li>
-                        <li>Amazon RDS,Amazon DynamoDB, Amazon Aurora</li>
+                        <li>CosmosDB, SQLite, DuckDB</li>
+                        <li>Amazon RDS, DynamoDB, Aurora</li>
                         <li>Modelagem de Dados, SQL Avançado</li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">DevOps & Cloud</h3>
-                    <ul class="list-disc list-inside text-gray-700">
+                    <ul class="list-disc list-inside text-gray-700 space-y-0.5">
                         <li>Git, GitHub, GitLab</li>
                         <li>Docker, Kubernetes (Básico)</li>
                         <li>AWS (EC2, S3, RDS, Lambda)</li>
@@ -233,128 +262,138 @@
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Sistemas & Ferramentas de IA</h3>
-                    <ul class="list-disc list-inside text-gray-700">
-                        <li>Linux (Arch Linux, Linux Mint, Ubuntu, Hyperland)</li>
+                    <ul class="list-disc list-inside text-gray-700 space-y-0.5">
+                        <li>Linux (Arch, Mint, Ubuntu, Hyprland)</li>
                         <li>Shell Script, Terminal avançado</li>
-                        <li>Cursor AI, GitHub Copilot, codex, Antigravity, claude code</li>
+                        <li>Cursor AI, GitHub Copilot, Claude Code</li>
                         <li>Metodologias Ágeis (Scrum, Kanban)</li>
-                        <li>Jira, Confluence, Trello, linear </li>
+                        <li>Jira, Confluence, Trello, Linear</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="projetos" class="content-section card rounded-lg p-6 md:p-8 mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold accent-color">Projetos Destacados</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Grade adaptável para Projetos -->
+        <section id="projetos" class="content-section card rounded-lg p-5 md:p-8 mb-6 md:mb-8">
+            <h2 class="text-xl md:text-3xl font-bold accent-color">Projetos Destacados</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-sm md:text-base">
                 <div
-                    class="border p-4 rounded-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    class="border p-4 rounded-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between bg-white">
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800">Projeto Senai</h3>
-                        <p class="text-sm text-gray-600 mb-2">Tecnologias: Desenvolvimento de Software / Projetos
+                        <h3 class="text-lg font-semibold text-gray-800">Projeto Senai</h3>
+                        <p class="text-xs text-gray-500 mb-2">Tecnologias: Desenvolvimento de Software / Projetos
                             Acadêmicos</p>
-                        <p class="text-gray-700 mb-3">Soluções e aplicações práticas criadas durante o ambiente de
-                            capacitação técnica, focando na arquitetura de software e boas práticas de codificação.</p>
+                        <p class="text-gray-700 text-xs md:text-sm">Soluções e aplicações práticas criadas durante o
+                            ambiente de capacitação técnica, focando na arquitetura de software e boas práticas de
+                            codificação.</p>
                     </div>
                     <a href="https://github.com/Londrik/Senai.git" target="_blank"
-                        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center mt-2">Ver no
-                        GitHub &rarr;</a>
+                        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center mt-2 text-sm">Ver
+                        no GitHub &rarr;</a>
                 </div>
 
                 <div
-                    class="border p-4 rounded-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    class="border p-4 rounded-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between bg-white">
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800">Plataforma para Idosos</h3>
-                        <p class="text-sm text-gray-600 mb-2">Tecnologias: Acessibilidade / Web / Mobile</p>
-                        <p class="text-gray-700 mb-3">Iniciativa voltada para inclusão digital e usabilidade
-                            simplificada, otimizando fluxos de interação e interfaces pensadas especificamente para o
-                            público idoso.</p>
+                        <h3 class="text-lg font-semibold text-gray-800">Plataforma para Idosos</h3>
+                        <p class="text-xs text-gray-500 mb-2">Tecnologias: Acessibilidade / Web / Mobile</p>
+                        <p class="text-gray-700 text-xs md:text-sm">Iniciativa voltada para inclusão digital e
+                            usabilidade simplificada, otimizando fluxos de interação e interfaces pensadas
+                            especificamente para o público idoso.</p>
                     </div>
                     <a href="https://github.com/Londrik/idosos.git" target="_blank"
-                        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center mt-2">Ver no
-                        GitHub &rarr;</a>
+                        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center mt-2 text-sm">Ver
+                        no GitHub &rarr;</a>
                 </div>
 
                 <div
-                    class="border p-4 rounded-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    class="border p-4 rounded-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between bg-white">
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800">Controle de Frotas (Backend)</h3>
-                        <p class="text-sm text-gray-600 mb-2">Tecnologias: Java / Arquitetura de Software</p>
-                        <p class="text-gray-700 mb-3">API robusta voltada ao gerenciamento de veículos, rotas e
-                            logística interna de frotas comerciais, priorizando segurança, desempenho de endpoints e
-                            estrutura limpa de serviços.</p>
+                        <h3 class="text-lg font-semibold text-gray-800">Controle de Frotas (Backend)</h3>
+                        <p class="text-xs text-gray-500 mb-2">Tecnologias: Java / Arquitetura de Software</p>
+                        <p class="text-gray-700 text-xs md:text-sm">API robusta voltada ao gerenciamento de veículos,
+                            rotas e logística interna de frotas comerciais, priorizando segurança, desempenho de
+                            endpoints e estrutura limpa de serviços.</p>
                     </div>
                     <a href="https://github.com/Londrik/Controle-de-frotas-.git" target="_blank"
-                        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center mt-2">Ver no
-                        GitHub &rarr;</a>
+                        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center mt-2 text-sm">Ver
+                        no GitHub &rarr;</a>
                 </div>
 
                 <div
-                    class="border p-4 rounded-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    class="border p-4 rounded-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between bg-white">
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800">Sistema de Gerenciamento de Biblioteca</h3>
-                        <p class="text-sm text-gray-600 mb-2">Tecnologias: PHP / Banco de Dados</p>
-                        <p class="text-gray-700 mb-3">Aplicação estruturada para o controle, empréstimo, devolução e
-                            catalogação de acervos bibliográficos, com painel administrativo e manipulação dinâmica de
-                            dados.</p>
+                        <h3 class="text-lg font-semibold text-gray-800">Sistema de Gerenciamento de Biblioteca</h3>
+                        <p class="text-xs text-gray-500 mb-2">Tecnologias: PHP / Banco de Dados</p>
+                        <p class="text-gray-700 text-xs md:text-sm">Aplicação estruturada para o controle, empréstimo,
+                            devolução e catalogação de acervos bibliográficos, com painel administrativo e manipulação
+                            dinâmica de dados.</p>
                     </div>
                     <a href="https://github.com/Londrik/biblioteca.git" target="_blank"
-                        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center mt-2">Ver no
-                        GitHub &rarr;</a>
+                        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center mt-2 text-sm">Ver
+                        no GitHub &rarr;</a>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="content-section card rounded-lg p-6 md:p-8">
-            <h2 class="text-2xl md:text-3xl font-bold accent-color">Contato</h2>
-            <p class="text-gray-700 mb-6">Estou sempre aberto a novas oportunidades e colaborações. Entre em contato!
-            </p>
-            <div class="space-y-4">
-                <div class="flex items-center">
-                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                        </path>
-                    </svg>
-                    <a href="mailto:henry.ribeiro2005@gmail.com"
-                        class="text-blue-600 hover:text-blue-800">henry.ribeiro2005@gmail.com</a>
+        <!-- SEÇÃO CONTATO REESTRUTURADA COM OS ÍCONES REAIS DO FONT AWESOME -->
+        <section id="contato" class="content-section card rounded-lg p-5 md:p-8 mb-6">
+            <h2 class="text-xl md:text-3xl font-bold accent-color">Contato</h2>
+            <p class="text-gray-700 mb-6 text-sm md:text-base">Estou sempre aberto a novas oportunidades e colaborações.
+                Entre em contato!</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm md:text-base">
+
+                <!-- Gmail -->
+                <div
+                    class="flex items-center p-3 border rounded-lg bg-white shadow-sm hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-envelope text-red-500 text-xl w-8 text-center mr-3"></i>
+                    <div class="flex flex-col min-w-0">
+                        <span class="text-xs font-semibold text-gray-500 uppercase">E-mail</span>
+                        <a href="mailto:henry.ribeiro2005@gmail.com"
+                            class="text-blue-600 hover:text-blue-800 font-medium break-all text-xs sm:text-sm">henry.ribeiro2005@gmail.com</a>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.308 1.154a11.042 11.042 0 005.516 5.516l1.154-2.308a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
-                        </path>
-                    </svg>
-                    <a href="tel:+556196852499" class="text-blue-600 hover:text-blue-800">(61) 9685-2499</a>
+
+                <!-- WhatsApp -->
+                <div
+                    class="flex items-center p-3 border rounded-lg bg-white shadow-sm hover:bg-gray-50 transition-colors">
+                    <i class="fa-brands fa-whatsapp text-green-500 text-xl w-8 text-center mr-3"></i>
+                    <div class="flex flex-col">
+                        <span class="text-xs font-semibold text-gray-500 uppercase">WhatsApp</span>
+                        <a href="https://wa.me/556196852499" target="_blank"
+                            class="text-blue-600 hover:text-blue-800 font-medium text-xs sm:text-sm">(61) 9685-2499</a>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
-                    <a href="https://www.linkedin.com/in/henryribeiro" target="_blank"
-                        class="text-blue-600 hover:text-blue-800">LinkedIn</a>
+
+                <!-- LinkedIn -->
+                <div
+                    class="flex items-center p-3 border rounded-lg bg-white shadow-sm hover:bg-gray-50 transition-colors">
+                    <i class="fa-brands fa-linkedin-in text-blue-600 text-xl w-8 text-center mr-3"></i>
+                    <div class="flex flex-col">
+                        <span class="text-xs font-semibold text-gray-500 uppercase">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/henryribeiro" target="_blank"
+                            class="text-blue-600 hover:text-blue-800 font-medium text-xs sm:text-sm">in/henryribeiro</a>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm.75 10.915V19.5a.75.75 0 0 1-1.5 0V13.165c0-.495.042-1.09.308-1.518.239-.382.6-.702 1.054-.886.463-.187.97-.203 1.413-.035.439.17.81.513.964.961.156.454.172.971.048 1.428-.135.495-.478.899-.905 1.114Zm-.327-5.626a1.5 1.5 0 1 0-2.692 0 1.5 1.5 0 0 0 2.692 0Z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <a href="https://github.com/Londrik" target="_blank"
-                        class="text-blue-600 hover:text-blue-800">GitHub</a>
+
+                <!-- GitHub -->
+                <div
+                    class="flex items-center p-3 border rounded-lg bg-white shadow-sm hover:bg-gray-50 transition-colors">
+                    <i class="fa-brands fa-github text-gray-900 text-xl w-8 text-center mr-3"></i>
+                    <div class="flex flex-col">
+                        <span class="text-xs font-semibold text-gray-500 uppercase">GitHub</span>
+                        <a href="https://github.com/Londrik" target="_blank"
+                            class="text-blue-600 hover:text-blue-800 font-medium text-xs sm:text-sm">github.com/Londrik</a>
+                    </div>
                 </div>
+
             </div>
         </section>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Smooth scroll
+            // Smooth scroll inteligente adaptado para mobile/desktop
             const navLinks = document.querySelectorAll('#nav-menu a[href^="#"]');
             navLinks.forEach(link => {
                 link.addEventListener('click', function (e) {
@@ -362,7 +401,9 @@
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        const offsetTop = targetElement.offsetTop - 60;
+                        // Calcula o offset dinamicamente com base no tamanho da tela (menu superior ou lateral)
+                        const isMobile = window.innerWidth < 768;
+                        const offsetTop = targetElement.offsetTop - (isMobile ? 120 : 40);
                         window.scrollTo({
                             top: offsetTop,
                             behavior: 'smooth'
@@ -371,23 +412,33 @@
                 });
             });
 
-            // Active link highlighting
+            // Gerenciador dinâmico de classe ativa ao rolar
             const sections = document.querySelectorAll('.content-section');
             const menuLinks = document.querySelectorAll('#nav-menu a');
 
             function changeActiveLink() {
                 let index = sections.length;
-                while (--index && window.scrollY + 100 < sections[index].offsetTop) { }
+                const isMobile = window.innerWidth < 768;
+                while (--index && window.scrollY + (isMobile ? 140 : 100) < sections[index].offsetTop) { }
                 menuLinks.forEach((link) => link.classList.remove('active'));
                 if (menuLinks[index]) {
                     menuLinks[index].classList.add('active');
+                    // No mobile, rola a barra de navegação para manter o item ativo visível
+                    if (isMobile) {
+                        const activeLi = menuLinks[index].parentElement;
+                        const navMenu = document.getElementById('nav-menu');
+                        navMenu.scrollTo({
+                            left: activeLi.offsetLeft - 20,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             }
 
             changeActiveLink();
             window.addEventListener('scroll', changeActiveLink);
 
-            // Year footer
+            // Ano dinâmico do rodapé
             const yearElement = document.getElementById('currentYear');
             if (yearElement) {
                 yearElement.textContent = new Date().getFullYear();
